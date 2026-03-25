@@ -10,7 +10,7 @@ Converte entre:
 
 ## Preview
 
-<img width="1919" height="909" alt="Preview do site" src="https://github.com/user-attachments/assets/8bb4d94e-03fa-4e8c-a1ab-f3f4c9411a01" />
+<img width="1918" height="905" alt="Captura de tela 2026-03-25 193514" src="https://github.com/user-attachments/assets/0e397c4f-621c-4bf9-ab57-25b7c52af6a9" />
 
 ## Tecnologias
 - HTML
