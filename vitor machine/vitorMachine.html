@@ -1,0 +1,224 @@
+<!-- Criado por Marise Miranda | 2017.1 -->
+<!-- Adaptado por Matheus Matos | 2025.1 -->
+
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vitor's Machine</title>
+    <link rel="icon" type="image/png" href="imagem/imgtitle.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="faixa_top">
+      <img id="sptech" src="imagem/sptech48.png" />SP-Tech | ADS
+    </div>
+    <div id="meio">
+      <h1 id="titulo">Vitor's Machine</h1>
+      <div id="img"></div>
+    </div>
+
+    <div id="caixas">
+      <div id="caixa1">
+        <h2 id="conversao">Conversão</h2>
+        <h3>Digite um número:</h3>
+        <input id="ipt_converte" type="text" placeholder="Ex: 42" /> <br />
+        <h3>Base de entrada:</h3>
+        <select id="select_base_convertor">
+          <option value="2">2 - Binario</option>
+          <option value="8">8 - Octal</option>
+          <option value="10">10 - Decimal</option>
+          <option value="16">16 - Hexadecimal</option>
+        </select>
+        <br />
+        <button onclick="chamaConversor()">Converter</button>
+        <div class="resultados e">
+          <h3>Resultados:</h3>
+          <div class="tipos bin">
+            <span class="msg_forma">Binário: </span>
+            <span id="demoE2" class="resul">-</span> <br />
+          </div>
+          <div class="tipos octa">
+            <span class="msg_forma">Octal: </span>
+            <span id="demoE3" class="resul">-</span> <br />
+          </div>
+          <div class="tipos dec">
+            <span class="msg_forma">Decimal: </span>
+            <span id="demoE4" class="resul">-</span> <br />
+          </div>
+          <div class="tipos hexa">
+            <span class="msg_forma">Hexadecimal: </span>
+            <span id="demoE5" class="resul">-</span> <br />
+          </div>
+        </div>
+      </div>
+
+      <div id="caixa2">
+        <h2 id="contas">Contas</h2>
+
+        <div class="numeros">
+          <div class="numero">
+            <h3>Primeiro número:</h3>
+            <div class="iptslc">
+              <input id="ipt_conta1" type="text" placeholder="Ex: 42" />
+              <select class="selectBD" id="select_base_contas1">
+                <option value="2">2 - Binario</option>
+                <option value="8">8 - Octal</option>
+                <option value="10">10 - Decimal</option>
+                <option value="16">16 - Hexadecimal</option>
+              </select>
+            </div>
+          </div>
+          <div class="numero">
+            <h3>Segundo número:</h3>
+            <div class="iptslc">
+              <input id="ipt_conta2" type="text" placeholder="Ex: 42" />
+              <select class="selectBD" id="select_base_contas2">
+                <option value="2">2 - Binario</option>
+                <option value="8">8 - Octal</option>
+                <option value="10">10 - Decimal</option>
+                <option value="16">16 - Hexadecimal</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <br />
+        <div class="pt_baixo">
+          <select id="select_op_calculo">
+            <option value="1">+ (Soma)</option>
+            <option value="2">- (subtração)</option>
+            <option value="3">x (multiplicação)</option>
+            <option value="4">/ (divisão)</option>
+          </select>
+          <br />
+          <button onclick="chamaCalcular()">Calcular</button>
+          <div class="resultados d">
+            <h3>Resultados:</h3>
+            <div class="tipos bin">
+              <span class="msg_forma">Binário: </span>
+              <span id="demoD2" class="resul">-</span> <br />
+            </div>
+            <div class="tipos octa">
+              <span class="msg_forma">Octal: </span>
+              <span id="demoD3" class="resul">-</span> <br />
+            </div>
+            <div class="tipos dec">
+              <span class="msg_forma">Decimal: </span>
+              <span id="demoD4" class="resul">-</span> <br />
+            </div>
+            <div class="tipos hexa">
+              <span class="msg_forma">Hexadecimal: </span>
+              <span id="demoD5" class="resul">-</span> <br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function chamaCalcular() {
+        let pNum = ipt_conta1.value;
+        let sNum = ipt_conta2.value;
+        let pBase = select_base_contas1.value;
+        let sBase = select_base_contas2.value;
+        let operacao = select_op_calculo.value;
+        let resultado = ``;
+
+        if (pBase == "2") {
+          pNum = parseInt(pNum, 2);
+        } else if (pBase == "8") {
+          pNum = parseInt(pNum, 8);
+        } else if (pBase == "16") {
+          pNum = parseInt(pNum, 16);
+        }
+
+        if (sBase == "2") {
+          sNum = parseInt(sNum, 2);
+        } else if (sBase == "8") {
+          sNum = parseInt(sNum, 8);
+        } else if (sBase == "16") {
+          sNum = parseInt(sNum, 16);
+        }
+
+        if (operacao == "1") {
+          resultado = Number(pNum) + Number(sNum);
+        } else if (operacao == "2") {
+          resultado = Number(pNum) - Number(sNum);
+        } else if (operacao == "3") {
+          resultado = Number(pNum) * Number(sNum);
+        } else {
+          resultado = Number(pNum) / Number(sNum);
+        }
+
+        converteDecimalD(resultado);
+      }
+
+      function converteDecimalD(entrada) {
+        entrada = Number(entrada);
+
+        demoD2.innerHTML = entrada.toString(2);
+        demoD3.innerHTML = entrada.toString(8);
+        demoD4.innerHTML = entrada;
+        demoD5.innerHTML = entrada.toString(16).toUpperCase();
+      }
+
+      function chamaConversor() {
+        let entrada = ipt_converte.value;
+        let base = select_base_convertor.value;
+
+        if (base == "2") {
+          converteBinario(entrada);
+        } else if (base == "8") {
+          converteOctal(entrada);
+        } else if (base == "10") {
+          converteDecimalE(entrada);
+        } else {
+          converteHexa(entrada);
+        }
+
+        if (entrada == "cor" && base == "8") {
+          img.innerHTML = `<img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/874.png">`;
+          titulo.innerHTML = `CORINTHIANS`;
+          conversao.style.backgroundColor = "black";
+          contas.style.backgroundColor = "black";
+          document.body.style.backgroundColor = "black";
+          titulo.style.color = "white";
+        }
+      }
+
+      function converteDecimalE(entrada) {
+        entrada = Number(entrada);
+
+        demoE2.innerHTML = entrada.toString(2);
+        demoE3.innerHTML = entrada.toString(8);
+        demoE4.innerHTML = entrada;
+        demoE5.innerHTML = entrada.toString(16).toUpperCase();
+      }
+
+      function converteBinario(entrada) {
+        let decimal = parseInt(entrada, 2);
+
+        converteDecimalE(decimal);
+      }
+
+      function converteOctal(entrada) {
+        let decimal = parseInt(entrada, 8);
+
+        converteDecimalE(decimal);
+      }
+
+      function converteHexa(entrada) {
+        let decimal = parseInt(entrada, 16);
+
+        converteDecimalE(decimal);
+      }
+    </script>
+  </body>
+</html>
